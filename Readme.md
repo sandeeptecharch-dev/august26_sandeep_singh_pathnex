@@ -141,28 +141,28 @@ Vim / Nano to manually create files and paste the content inside EC2
 🔁 Repeat for Multiple Versions
 Repeat the same process for all versions:
 Version 1
-pathnex-app-v1.js
-pathnex-dockerfile-v1
+vim pathnex-app-v1.js
+vim pathnex-dockerfile-v1
 docker build -t pathnex-app-v1 -f pathnex-dockerfile-v1 .
 docker run -d -p 80:3000 --name pathenx-contaner-v1 pathnex-app-v1
 
 Version 2
-pathnex-app-v2.js
-pathnex-dockerfile-v2
+vim pathnex-app-v2.js
+vim pathnex-dockerfile-v2
 docker build -t pathnex-app-v2 -f pathnex-dockerfile-v2 .
-docker run -d -p 80:3000 --name pathenx-contaner-v2 pathnex-app-v2
+docker run -d -p 80:3000 --name pathenx-contaner-v2 pathnex-app-v2 #If the first contianer is still running you have to change the port
 
 Version 3
-pathnex-app-v3.js
-pathnex-dockerfile-v3
+vim pathnex-app-v3.js
+vim pathnex-dockerfile-v3
 docker build -t pathnex-app-v3 -f pathnex-dockerfile-v3 .
-docker run -d -p 80:3000 --name pathenx-contaner-v3 pathnex-app-v3
+docker run -d -p 80:3000 --name pathenx-contaner-v3 pathnex-app-v3 #If the first contianer is still running you have to change the port
 
 Version 4
-pathnex-app-v4.js
-pathnex-dockerfile-v4
+vim pathnex-app-v4.js
+vim pathnex-dockerfile-v4
 docker build -t pathnex-app-v4 -f pathnex-dockerfile-v4 .
-docker run -d -p 8:3000 --name pathenx-contaner-v4 pathnex-app-v4
+docker run -d -p 80:3000 --name pathenx-contaner-v4 pathnex-app-v4 #If the first contianer is still running you have to change the port
 
 🎯 Purpose
 Each version represents a different UI or variation of your application.
@@ -246,8 +246,8 @@ docker stop pathnex-container
 docker rm pathnex-container
 
 📊 Logs & Debugging
-docker logs pathnex-container
-docker logs -f pathnex-container
+docker logs pathnex-container    # Read a log file once
+docker logs -f pathnex-container # Subscribe to live updates of the log
 
 🧠 Exec inside container
 docker exec -it pathnex-container /bin/bash
