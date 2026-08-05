@@ -1,4 +1,4 @@
-Your schedule is well structured and gives dedicated time to learning before and after work. Here's a polished version:
+Daily task activity
 
 Time	Activity
 5:00 AM	Wake up, freshen up, and do light stretching
@@ -8,3 +8,5 @@ Time	Activity
 7:00 PM – 8:00 PM	Pathnex Evening Class and Dinner
 8:00 PM – 10:30 PM	Practice and revise everything learned today
 10:30 PM	Sleep while mentally recalling and reviewing the day's learning
+
+Services & Tags and ngnix install
