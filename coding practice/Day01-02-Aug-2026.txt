@@ -1,3 +1,4 @@
+
 - name: Install Nginx on Pathnex server
   hosts: all
   become: yes
