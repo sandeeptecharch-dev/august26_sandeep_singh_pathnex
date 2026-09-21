@@ -41,8 +41,14 @@ variable "tags" {
   type        = map(string)
   description = "Common tags"
   default = {
-    Project = "terraform-class"
+    Project = "terraform-ec2"
   }
+}
+
+variable "key_name" {
+  type        = string
+  description = "EC2 SSH key pair name"
+  default     = "pathnex-key"
 }
 
 provider "aws" {
@@ -98,6 +104,18 @@ resource "aws_security_group" "web_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # SSH
+  ingress {
+    description = "SSH"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+
+    # For learning/testing.
+    # Better: replace with YOUR_PUBLIC_IP/32
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     description = "All outbound"
     from_port   = 0
@@ -107,7 +125,7 @@ resource "aws_security_group" "web_sg" {
   }
 
   tags = {
-    Project = "terraform-class"
+    Project = "terraform-ec2"
     Name    = "pathnex-sep-tf-sg"
   }
 }
@@ -119,6 +137,9 @@ resource "aws_instance" "sep-tf" {
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
 
+  # Attach EC2 Key Pair
+  key_name = var.key_name
+
   user_data = <<-EOF
               #!/bin/bash
               dnf update -y
@@ -129,7 +150,7 @@ resource "aws_instance" "sep-tf" {
               EOF
 
   tags = {
-    Project = "terraform-class-for-ec2"
+    Project = "terraform-for-ec2"
     Name    = "pathnex-sep-tf-instance"
     batch   = var.name_prefix
   }
