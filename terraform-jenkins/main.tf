@@ -29,7 +29,7 @@ data "aws_vpc" "default" {
 
 # Security Group
 resource "aws_security_group" "jenkins_sg" {
-  name   = "jenkins-sg"
+  name   = "jenkins-sg2"
   vpc_id = data.aws_vpc.default.id
 
   # SSH
@@ -60,7 +60,7 @@ resource "aws_security_group" "jenkins_sg" {
 resource "aws_instance" "jenkins_server" {
 
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = "t3.micro"
+  instance_type = "c7i-flex.large"
   key_name = "pathnex-key"
 
   vpc_security_group_ids = [

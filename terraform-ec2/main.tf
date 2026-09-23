@@ -20,11 +20,20 @@ resource "aws_instance" "pathnex_ec2" {
   ami           = "ami-066c4849e6b3a1e3d"
   instance_type = "t3.micro"
 
- # subnet_id = "subnet-07758e7f0b84cbd8f"
+  # subnet_id = "subnet-07758e7f0b84cbd8f"
 
- 
+
 }
 
+resource "aws_instance" "pathnex_ec3" {
+  # (resource arguments)
+  ami           = "ami-066c4849e6b3a1e3d"
+  instance_type = "c7i-flex.large"
+  tags = {
+    Name = "pathnex_ec3"
+  }
+
+}
 # -------------------------
 # Variables
 # -------------------------
