@@ -11,10 +11,29 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 6.0"
     }
+
+
   }
 }
 
+resource "aws_instance" "pathnex_ec2" {
+  ami           = "ami-066c4849e6b3a1e3d"
+  instance_type = "t3.micro"
 
+  # subnet_id = "subnet-07758e7f0b84cbd8f"
+
+
+}
+
+resource "aws_instance" "pathnex_ec3" {
+  # (resource arguments)
+  ami           = "ami-066c4849e6b3a1e3d"
+  instance_type = "c7i-flex.large"
+  tags = {
+    Name = "pathnex_ec3"
+  }
+
+}
 # -------------------------
 # Variables
 # -------------------------
@@ -146,7 +165,7 @@ resource "aws_instance" "sep-tf" {
               dnf install -y httpd
               systemctl enable httpd
               systemctl start httpd
-              echo "<h1>Hello All, Today is 18 sep 2026 and ec2 creation with the help of terraform is successful </h1>" > /var/www/html/index.html
+              echo "<h1>Hello All, Today is 21 sep 2026 and ec2 creation with the help of terraform is successful </h1>" > /var/www/html/index.html
               EOF
 
   tags = {
